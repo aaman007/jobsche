@@ -1,0 +1,2 @@
+FLASK_APP=jobsche/server
+FLASK_ENV=development

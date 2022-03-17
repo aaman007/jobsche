@@ -1,7 +1,8 @@
 ## JobSche
 
 A Flask web server for job scheduling. Everything is on the application server and
-only the scheduling part would be handled by this web server.
+only the scheduling part would be handled by this web server. This is not suitable
+for long running jobs.
 
 ### Job Types
  - RegularJob (Job that would run immediately)
