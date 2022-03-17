@@ -8,9 +8,9 @@ from jobsche.models.job import (
 
 
 __all__ = [
-    App,
-    RegularJob,
-    DelayedJob,
-    ScheduledJob,
-    RecurrentJob,
+    'App',
+    'RegularJob',
+    'DelayedJob',
+    'ScheduledJob',
+    'RecurrentJob',
 ]
