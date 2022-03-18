@@ -1,6 +1,6 @@
 from flask import Flask
 
-import jobsche.models
+from jobsche.models import *
 from jobsche.config import Config
 from jobsche.db import db
 
