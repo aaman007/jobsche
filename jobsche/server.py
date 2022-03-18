@@ -1,5 +1,6 @@
-from flask import Flask
+from flask import Flask, jsonify
 
+from jobsche.api import create_api
 from jobsche.models import *
 from jobsche.config import Config
 from jobsche.db import db
@@ -19,8 +20,14 @@ def create_app(config=None):
 
 
 app = create_app(Config())
+create_api(app)
 
 
 @app.route('/hello', methods=['GET'])
 def home():
     return 'Hello World!'
+
+
+@app.route('/', methods=['GET'])
+def data():
+    return jsonify([{'data': 'Hello World'}])

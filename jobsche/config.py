@@ -20,6 +20,12 @@ class Environment:
 class Config:
     SECRET_KEY = SECRET_KEY
     SQLALCHEMY_DATABASE_URI = SQLALCHEMY_DATABASE_URI
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+    # Flask Smorest Configs
+    API_TITLE = 'JobSche API'
+    API_VERSION = 'v1'
+    OPENAPI_VERSION = '3.0.2'
 
     @property
     def DEBUG(self):
