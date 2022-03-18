@@ -35,9 +35,9 @@ class RetrieveUpdateDestroyView(MethodView):
         try:
             return AppService.find_by_guid(guid)
         except ObjectNotFound as e:
-            abort(404, message=e.message)
-        except Exception as e:
-            abort(500, 'Something went wrong!')
+            return abort(404, message=e.message)
+        except Exception as _:
+            return abort(500, 'Something went wrong!')
 
     @blp.arguments(AppSchema, location='json')
     @blp.response(200, AppSchema)
@@ -45,15 +45,15 @@ class RetrieveUpdateDestroyView(MethodView):
         try:
             return AppService.update(guid, data)
         except ObjectNotFound as e:
-            abort(404, message=e.message)
-        except Exception as e:
-            abort(500, 'Something went wrong!')
+            return abort(404, message=e.message)
+        except Exception as _:
+            return abort(500, 'Something went wrong!')
 
     @blp.response(204, None)
     def delete(self, guid):
         try:
             return AppService.delete(guid)
         except ObjectNotFound as e:
-            abort(404, message=e.message)
-        except Exception as e:
-            abort(500, 'Something went wrong!')
+            return abort(404, message=e.message)
+        except Exception as _:
+            return abort(500, 'Something went wrong!')
