@@ -8,3 +8,6 @@ class App(BaseModel):
     name = db.Column(db.String(255), nullable=False)
     description = db.Column(db.TEXT, nullable=True)
     secret_key = db.Column(db.String(32), nullable=True, index=True)
+
+    def __repr__(self):
+        return f'<App: {self.name}>'

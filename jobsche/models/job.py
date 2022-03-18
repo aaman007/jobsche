@@ -28,6 +28,9 @@ class RegularJob(BaseJob):
     app_id = db.Column(db.Integer, db.ForeignKey('apps.id'), nullable=False)
     app = db.relationship('App', backref=db.backref('regular_jobs', lazy=True))
 
+    def __repr__(self):
+        return f'<RegularJob: {self.guid}>'
+
 
 class DelayedJob(BaseJob):
     __tablename__ = 'delayed_jobs'
@@ -35,6 +38,9 @@ class DelayedJob(BaseJob):
     app_id = db.Column(db.Integer, db.ForeignKey('apps.id'), nullable=False)
     app = db.relationship('App', backref=db.backref('delayed_jobs', lazy=True))
     countdown = db.Column(db.Integer, nullable=False)
+
+    def __repr__(self):
+        return f'<DelayedJob: {self.guid}>'
 
 
 class ScheduledJob(BaseJob):
@@ -50,6 +56,9 @@ class ScheduledJob(BaseJob):
     )
     scheduled_at = db.Column(db.DateTime, nullable=False)
 
+    def __repr__(self):
+        return f'<ScheduledJob: {self.guid}>'
+
 
 class RecurrentJob(BaseJob):
     __tablename__ = 'recurrent_jobs'
@@ -63,3 +72,6 @@ class RecurrentJob(BaseJob):
         )
     )
     cron_rule = db.Column(db.String(30), nullable=False)
+
+    def __repr__(self):
+        return f'<RecurrentJob: {self.guid}>'
