@@ -23,8 +23,8 @@ class Config:
 
     @property
     def DEBUG(self):
-        return not ENV == Environment.PRODUCTION
+        return ENV != Environment.PRODUCTION
 
     @property
     def TESTING(self):
-        return not ENV == Environment.PRODUCTION
+        return ENV != Environment.PRODUCTION
