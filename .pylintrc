@@ -4,4 +4,7 @@ disable=
     C0115, # missing-class-docstring
     C0116, # missing-function-docstring
     E1101, # no-member
-    W0614, # unused-wildcard-import
+    W0614, # unused-wildcard-import,
+    W0401, # wildcard-import
+    C0103, # invalid-name
+    R0903, # too-few-public-methods
