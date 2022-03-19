@@ -10,16 +10,7 @@ services:
       - app_network
     depends_on:
       - db
-
-  proxy:
-    build: proxy
-    restart: always
-    ports:
-      - 5000:80
-    depends_on:
-      - app
-    networks:
-      - app_network
+      - broker
 
   db:
     image: mysql:8.0.27
@@ -31,6 +22,22 @@ services:
     environment:
       - MYSQL_DATABASE=jobsche
       - MYSQL_ROOT_PASSWORD=password
+
+  broker:
+    image: redis
+    restart: always
+    networks:
+      - app_network
+
+  proxy:
+    build: proxy
+    restart: always
+    ports:
+      - 5000:80
+    depends_on:
+      - app
+    networks:
+      - app_network
 
 volumes:
   db-data:
