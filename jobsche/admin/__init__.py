@@ -1,6 +1,6 @@
 from flask import Blueprint
 
-from jobsche.admin.home import blp as home_blp
+from jobsche.admin.controllers.home import blp as home_blp
 
 
 def register_blueprints(blp):
