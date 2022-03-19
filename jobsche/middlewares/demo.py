@@ -1,6 +1,6 @@
 class DemoMiddleware:
-    def __init__(self, app):
-        self.app = app
+    def __init__(self, wsgi_app):
+        self.wsgi_app = wsgi_app
 
     def __call__(self, environ, start_response):
         # Set X-Jobsche-Valid header
@@ -10,4 +10,4 @@ class DemoMiddleware:
         # from werkzeug.wrappers import Request
         # request = Request(environ, shallow=True)
 
-        return self.app(environ, start_response)
+        return self.wsgi_app(environ, start_response)

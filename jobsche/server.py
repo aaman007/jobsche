@@ -8,9 +8,9 @@ from jobsche.config import Config
 from jobsche.db import db
 
 
-def register_middlewares(app):
-    app.wsgi_app = DemoMiddleware(app.wsgi_app)
-    return app
+def register_middlewares(flask_app):
+    flask_app.wsgi_app = DemoMiddleware(flask_app.wsgi_app)
+    return flask_app
 
 
 def create_app(config=None):
