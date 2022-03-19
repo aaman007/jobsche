@@ -76,7 +76,7 @@ class SecretKeyRetrieveView(MethodView):
 
 
 @blp.route('/<string:guid>/secret-key/refresh')
-class SecretKeyRetrieveView(MethodView):
+class SecretKeyRefreshView(MethodView):
 
     @blp.response(200, SecretKeyResponseSchema)
     def post(self, guid):
