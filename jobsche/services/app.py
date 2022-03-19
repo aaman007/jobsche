@@ -9,26 +9,8 @@ class AppService(BaseService):
 
     @classmethod
     def create(cls, data):
-        app = App(
-            name=data['name'],
-            description=data['description'],
-            secret_key=uuid4()
-        )
-        app.save()
-        return app
-
-    @classmethod
-    def update(cls, guid, data):
-        app = cls.find_by_guid(guid)
-        app.name = data['name']
-        app.description = data['description']
-        app.save()
-        return app
-
-    @classmethod
-    def delete(cls, guid):
-        app = cls.find_by_guid(guid)
-        app.delete()
+        app = App(**data, secret_key=uuid4())
+        return app.save()
 
     @classmethod
     def refresh_secret_key(cls, guid):

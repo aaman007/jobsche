@@ -1,12 +1,12 @@
 from flask.views import MethodView
-from flask_smorest import Blueprint, abort
+from flask_smorest import Blueprint
 
+from jobsche.api.controllers.utils import safe_service_call
 from jobsche.api.schemas.app import (
     AppResponseSchema,
     SecretKeyResponseSchema
 )
 from jobsche.services.app import AppService
-from jobsche.exceptions import ObjectNotFound
 
 
 blp = Blueprint(
@@ -35,31 +35,16 @@ class RetrieveUpdateDestroyView(MethodView):
 
     @blp.response(200, AppResponseSchema)
     def get(self, guid):
-        try:
-            return AppService.find_by_guid(guid)
-        except ObjectNotFound as e:
-            return abort(404, message=e.message)
-        except Exception as _:
-            return abort(500, 'Something went wrong!')
+        return safe_service_call(AppService.find_by_guid, guid)
 
     @blp.arguments(AppResponseSchema, location='json')
     @blp.response(200, AppResponseSchema)
     def put(self, data, guid):
-        try:
-            return AppService.update(guid, data)
-        except ObjectNotFound as e:
-            return abort(404, message=e.message)
-        except Exception as _:
-            return abort(500, 'Something went wrong!')
+        return safe_service_call(AppService.update, guid, data)
 
     @blp.response(204, None)
     def delete(self, guid):
-        try:
-            return AppService.delete(guid)
-        except ObjectNotFound as e:
-            return abort(404, message=e.message)
-        except Exception as _:
-            return abort(500, 'Something went wrong!')
+        safe_service_call(AppService.delete, guid)
 
 
 @blp.route('/<string:guid>/secret-key')
@@ -67,12 +52,7 @@ class SecretKeyRetrieveView(MethodView):
 
     @blp.response(200, SecretKeyResponseSchema)
     def get(self, guid):
-        try:
-            return AppService.find_by_guid(guid)
-        except ObjectNotFound as e:
-            return abort(404, message=e.message)
-        except Exception as _:
-            return abort(500, 'Something went wrong!')
+        return safe_service_call(AppService.find_by_guid, guid)
 
 
 @blp.route('/<string:guid>/secret-key/refresh')
@@ -80,9 +60,4 @@ class SecretKeyRefreshView(MethodView):
 
     @blp.response(200, SecretKeyResponseSchema)
     def post(self, guid):
-        try:
-            return AppService.refresh_secret_key(guid)
-        except ObjectNotFound as e:
-            return abort(404, message=e.message)
-        except Exception as _:
-            return abort(500, 'Something went wrong!')
+        return safe_service_call(AppService.refresh_secret_key, guid)

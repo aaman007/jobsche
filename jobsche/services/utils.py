@@ -21,3 +21,20 @@ class BaseService:
         if not obj:
             raise ObjectNotFound(f'Object with guid {guid} not found')
         return obj
+
+    @classmethod
+    def create(cls, data):
+        obj = cls(**data)
+        return obj.save()
+
+    @classmethod
+    def update(cls, guid, data):
+        obj = cls.find_by_guid(guid)
+        for key, value in data.items():
+            setattr(obj, key, value)
+        return obj.save()
+
+    @classmethod
+    def delete(cls, guid):
+        obj = cls.find_by_guid(guid)
+        return obj.delete()
