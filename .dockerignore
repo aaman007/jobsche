@@ -1,0 +1,10 @@
+__pycache__/
+venv
+.git
+.github
+docs
+proxy
+scripts
+docker-compose.yml
+Dockerfile
+readme.MD
