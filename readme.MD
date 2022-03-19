@@ -11,9 +11,9 @@ for long running jobs.
  - RecurrentJob (Job that would be executed at a specific interval)
 
  ### What the application server needs
-- Call the scheduling endpoint with (
-    job type,
+- Call the specific scheduling endpoint with (
     retries,
+    backoff,
     webhook that executes the task that the job requires,
     webhook that would handle the result
 )
