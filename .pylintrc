@@ -10,3 +10,4 @@ disable=
     R0903, # too-few-public-methods
     R0201, # no-self-use
     W0703, # broad-except
+    R0801, # duplicate-code
