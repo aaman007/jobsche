@@ -10,7 +10,7 @@ blp = Blueprint(
 
 @blp.route('/hello', methods=['GET'])
 def home():
-    return 'Hello World!!'
+    return 'Hello World!'
 
 
 @blp.route('', methods=['GET'])
