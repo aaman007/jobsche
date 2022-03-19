@@ -1,11 +1,13 @@
 version: "3.9"
 
 services:
-  backend:
+  app:
     build: .
     restart: always
+    volumes:
+      - .:/app
     networks:
-      - backend
+      - app_network
     depends_on:
       - db
 
@@ -15,9 +17,9 @@ services:
     ports:
       - 5000:80
     depends_on:
-      - backend
+      - app
     networks:
-      - backend
+      - app_network
 
   db:
     image: mysql:8.0.27
@@ -25,7 +27,7 @@ services:
     volumes:
       - db-data:/var/lib/mysql
     networks:
-      - backend
+      - app_network
     environment:
       - MYSQL_DATABASE=jobsche
       - MYSQL_ROOT_PASSWORD=password
@@ -33,4 +35,4 @@ services:
 volumes:
   db-data:
 networks:
-  backend:
+  app_network:
