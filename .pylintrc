@@ -11,3 +11,5 @@ disable=
     R0201, # no-self-use
     W0703, # broad-except
     R0801, # duplicate-code
+    R0911, # too-many-return-statements
+    E0237, # assigning-non-slot

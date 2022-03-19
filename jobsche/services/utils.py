@@ -1,9 +1,8 @@
-from jobsche.models.utils import BaseModel
 from jobsche.exceptions import ObjectNotFound, ConfigurationError
 
 
 class BaseService:
-    _model: BaseModel = None
+    _model: callable = None
 
     @classmethod
     def _check_model_or_raise(cls):
