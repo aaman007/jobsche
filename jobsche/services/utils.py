@@ -24,7 +24,7 @@ class BaseService:
 
     @classmethod
     def create(cls, data):
-        obj = cls(**data)
+        obj = cls._model(**data)
         return obj.save()
 
     @classmethod
