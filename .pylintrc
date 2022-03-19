@@ -13,3 +13,4 @@ disable=
     R0801, # duplicate-code
     R0911, # too-many-return-statements
     E0237, # assigning-non-slot
+    E1102, # not-callable (Am I about to disable everything?)

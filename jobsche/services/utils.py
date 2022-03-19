@@ -2,7 +2,7 @@ from jobsche.exceptions import ObjectNotFound, ConfigurationError
 
 
 class BaseService:
-    _model: callable = None
+    _model = None
 
     @classmethod
     def _check_model_or_raise(cls):
