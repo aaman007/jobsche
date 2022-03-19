@@ -1,25 +1,18 @@
+from uuid import uuid4
+
 from jobsche.models.app import App
-from jobsche.exceptions import ObjectNotFound
+from jobsche.services.utils import BaseService
 
 
-class AppService:
-
-    @classmethod
-    def find_all(cls):
-        return App.query.all()
-
-    @classmethod
-    def find_by_guid(cls, guid):
-        app = App.query.filter_by(guid=guid).first()
-        if not app:
-            raise ObjectNotFound(f'App with guid {guid} not found')
-        return app
+class AppService(BaseService):
+    _model = App
 
     @classmethod
     def create(cls, data):
         app = App(
             name=data['name'],
             description=data['description'],
+            secret_key=uuid4()
         )
         app.save()
         return app
@@ -36,3 +29,10 @@ class AppService:
     def delete(cls, guid):
         app = cls.find_by_guid(guid)
         app.delete()
+
+    @classmethod
+    def refresh_secret_key(cls, guid):
+        app = cls.find_by_guid(guid)
+        app.secret_key = uuid4()
+        app.save()
+        return app

@@ -21,9 +21,6 @@ class BaseModel(db.Model):
     )
 
     def save(self):
-        if self.id is None and self.guid:
-            raise ValueError('Cannot save an object with a guid')
-
         db.session.add(self)
         db.session.commit()
 
