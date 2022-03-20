@@ -92,11 +92,11 @@ class JobRetrieveView(MethodView):
     def _get_service(job_type):
         if job_type == 'delayed':
             return DelayedJobService
-        if job_type == 'scheduled':
+        elif job_type == 'scheduled':
             return ScheduledJobService
-        if job_type == 'recurrent':
+        elif job_type == 'recurrent':
             return RecurrentJobService
-        if job_type == 'delayed':
+        elif job_type == 'delayed':
             return DelayedJobService
         return abort(500, 'Something went wrong!')
 
