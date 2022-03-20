@@ -1,7 +1,6 @@
 [MASTER]
-ignore=
+ignore-paths=
     migrations,
-    tests
 disable=
     C0114, # missing-module-docstring
     C0115, # missing-class-docstring
