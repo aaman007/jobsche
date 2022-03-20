@@ -89,14 +89,16 @@ class RecurrentJobCreateView(MethodView):
 class JobRetrieveView(MethodView):
 
     @staticmethod
-    def _get_service(type):
-        if type == 'delayed':
+    def _get_service(job_type):
+        if job_type == 'delayed':
             return DelayedJobService
-        elif type == 'scheduled':
+        elif job_type == 'scheduled':
             return ScheduledJobService
-        elif type == 'recurrent':
+        elif job_type == 'recurrent':
             return RecurrentJobService
-        return RegularJobService
+        elif job_type == 'delayed':
+            return DelayedJobService
+        return abort(500, 'Something went wrong!')
 
     @blp.arguments(JobQueryArgsSchema, location='query')
     @blp.response(200, RegularJobSchema)
