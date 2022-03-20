@@ -8,5 +8,9 @@ class AppSchema(BaseSchema):
     description = ma.fields.String(required=True)
 
 
+class AppQueryArgsSchema(ma.Schema):
+    guid = ma.fields.UUID(required=True)
+
+
 class SecretKeySchema(ma.Schema):
     secret_key = ma.fields.UUID(dump_only=True)

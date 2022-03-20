@@ -34,11 +34,13 @@ def authorized_app():
     def decorator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
-            app_id = kwargs.get('guid')
+            app_id = request.headers.get('X-App-Id')
             secret_key = request.headers.get('X-Secret-Key')
 
             if not secret_key:
                 return abort(401, message='Missing X-Secret-Key header')
+            if not app_id:
+                return abort(401, message='Missing X-App-Id header')
 
             request.app = safe_service_call(
                 AppService.authenticate,
