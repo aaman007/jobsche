@@ -1,19 +1,20 @@
-from enum import Enum
 from jobsche.db import db
 from jobsche.models.utils import BaseModel
 
 
-class JobStatus(Enum):
-    SCHEDULED = 0
-    RUNNING = 1
-    EXECUTED = 2
-    FAILED = 3
+JobStatus = (
+    'scheduled',
+    'running',
+    'excuted',
+    'failed',
+    'cancelled',
+)
 
 
 class BaseJob(BaseModel):
     __abstract__ = True
 
-    status = db.Column(db.Enum(JobStatus), default=JobStatus.SCHEDULED)
+    status = db.Column(db.Enum(*JobStatus), default='scheduled')
     retries = db.Column(db.Integer, default=0)
     attempts = db.Column(db.Integer, default=0)
     backoff_delay = db.Column(db.Integer, default=0)
