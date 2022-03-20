@@ -1,12 +1,17 @@
+alembic==1.7.7
 apispec==5.1.1
 autopep8==1.6.0
 click==8.0.4
 Flask==2.0.3
+Flask-Migrate==3.1.0
 flask-smorest==0.37.0
 Flask-SQLAlchemy==2.5.1
 greenlet==1.1.2
+importlib-metadata==4.11.3
+importlib-resources==5.4.0
 itsdangerous==2.1.1
 Jinja2==3.0.3
+Mako==1.2.0
 MarkupSafe==2.1.1
 marshmallow==3.15.0
 mccabe==0.6.1
@@ -20,3 +25,4 @@ SQLAlchemy==1.4.32
 toml==0.10.2
 webargs==8.1.0
 Werkzeug==2.0.3
+zipp==3.7.0

@@ -5,7 +5,7 @@ from jobsche.admin import create_admin
 from jobsche.models import *
 from jobsche.middlewares.demo import DemoMiddleware
 from jobsche.config import Config
-from jobsche.db import db
+from jobsche.db import initialize_db
 
 
 def register_middlewares(flask_app):
@@ -20,10 +20,7 @@ def create_app(config=None):
         flask_app.config.from_object(config)
 
     register_middlewares(flask_app)
-
-    db.init_app(flask_app)
-    with flask_app.app_context():
-        db.create_all()
+    initialize_db(flask_app)
 
     return flask_app
 

@@ -36,14 +36,24 @@
 - ### App
     - POST `/api/app` (name, description)
         creates and app and returns the app_data (id, name, description, updated_at, created_at)
-    - GET `/api/app/{id}`
+    - GET `/api/app/item?guid={guid}`
         returns the app_data (id, name, description, updated_at, created_at)
-    - GET `/api/app/{id}/secret-key`
+    - PUT `/api/app/item`
+        updates an existing app data          
+        requires (X-App-Id, X-Secret-Key headers)
+    - DELETE `/api/app/item`
+        deletes an existing app             
+        requires (X-App-Id, X-Secret-Key headers)
+    - GET `/api/app/item/secret-key?guid={guid}`
         returns the secret key of the app
     - POST `/api/app/{id}/secret-key/refresh`
         refreshes and returns the new secret key
 
 - ### Job
+    requires (X-App-Id, X-Secret-Key headers)        
+
+    - GET `/api/jobs/{guid}?type=delayed`
+        retrieves a job
     - POST `/api/jobs/delay`
         creates a new regular job
     - POST `/api/jobs/countdown`
