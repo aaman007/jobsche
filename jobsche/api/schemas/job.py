@@ -13,7 +13,7 @@ class ChoiceField(ma.fields.Field):
         self.choices = kwargs.pop('choices')
 
     def _serialize(self, value, attr, obj, **kwargs):
-        return value.value if value else ''
+        return value if value else ''
 
     def _deserialize(self, value, attr, data, **kwargs):
         mapper = {val: val for val in self.choices}
