@@ -4,18 +4,18 @@ ignore-paths=
     docs,
     scripts,
 disable=
-    missing-module-docstring
-    missing-class-docstring
-    missing-function-docstring
-    no-member
+    missing-module-docstring,
+    missing-class-docstring,
+    missing-function-docstring,
+    no-member,
     unused-wildcard-import,
-    wildcard-import
-    invalid-name
-    too-few-public-methods
-    no-self-use
-    broad-except
-    duplicate-code
-    too-many-return-statements
-    assigning-non-slot
+    wildcard-import,
+    invalid-name,
+    too-few-public-methods,
+    no-self-use,
+    broad-except,
+    duplicate-code,
+    too-many-return-statements,
+    assigning-non-slot,
     no-else-return,
     not-callable,
