@@ -1,18 +1,21 @@
 [MASTER]
 ignore-paths=
     migrations,
+    docs,
+    scripts,
 disable=
-    C0114, # missing-module-docstring
-    C0115, # missing-class-docstring
-    C0116, # missing-function-docstring
-    E1101, # no-member
-    W0614, # unused-wildcard-import,
-    W0401, # wildcard-import
-    C0103, # invalid-name
-    R0903, # too-few-public-methods
-    R0201, # no-self-use
-    W0703, # broad-except
-    R0801, # duplicate-code
-    R0911, # too-many-return-statements
-    E0237, # assigning-non-slot
-    E1102, # not-callable (Am I about to disable everything?)
+    missing-module-docstring,
+    missing-class-docstring,
+    missing-function-docstring,
+    no-member,
+    unused-wildcard-import,
+    wildcard-import,
+    invalid-name,
+    too-few-public-methods,
+    no-self-use,
+    broad-except,
+    duplicate-code,
+    too-many-return-statements,
+    assigning-non-slot,
+    no-else-return,
+    not-callable,
