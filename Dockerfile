@@ -14,4 +14,5 @@ RUN apk update \
 
 COPY . /app/
 
-CMD flask run --host=0.0.0.0
+# CMD flask run --host=0.0.0.0
+CMD gunicorn -c gunicorn.conf.py
